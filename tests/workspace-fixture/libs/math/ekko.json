@@ -1,0 +1,10 @@
+{
+  "name": "@test/math",
+  "version": "1.0.0",
+  "type": "lib",
+  "exports": {
+    ".": "./src/index.ts",
+    "./advanced": "./src/advanced.ts",
+    "./helpers": "./src/helpers.ts"
+  }
+}

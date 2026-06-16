@@ -1,0 +1,52 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #1e1e2e; color: #cdd6f4; }
+.header-bar { position: sticky; top: 0; z-index: 10; background: #11111b; border-bottom: 1px solid #313244; padding: 12px 24px; display: flex; align-items: center; gap: 24px; }
+.logo { font-weight: 800; font-size: 1.1em; color: #cba6f7; white-space: nowrap; }
+.metrics-bar { display: flex; gap: 16px; flex-wrap: wrap; }
+.metric { padding: 4px 12px; border-radius: 6px; font-size: 0.85em; background: #181825; border: 1px solid #313244; }
+.metric strong { margin: 0 4px; }
+.metric small { color: #6c7086; }
+.metric.high { border-color: #a6e3a1; color: #a6e3a1; }
+.metric.medium { border-color: #f9e2af; color: #f9e2af; }
+.metric.low { border-color: #f38ba8; color: #f38ba8; }
+.container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+h1 { color: #cdd6f4; margin-bottom: 8px; font-size: 1.4em; }
+.breadcrumb { margin-bottom: 16px; font-size: 0.9em; color: #6c7086; }
+.breadcrumb a { color: #89b4fa; text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+a { color: #89b4fa; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.summary { margin-bottom: 16px; color: #a6adc8; }
+table.cov { width: 100%; border-collapse: collapse; background: #181825; border-radius: 8px; overflow: hidden; margin-bottom: 24px; }
+table.cov th { background: #11111b; padding: 10px 14px; text-align: left; font-weight: 600; color: #bac2de; font-size: 0.85em; cursor: pointer; user-select: none; white-space: nowrap; }
+table.cov th:hover { color: #cba6f7; }
+table.cov td { padding: 8px 14px; border-top: 1px solid #1e1e2e; font-size: 0.9em; }
+table.cov tr:hover { background: #1e1e2e; }
+.bar { width: 80px; height: 6px; background: #313244; border-radius: 3px; overflow: hidden; display: inline-block; vertical-align: middle; margin-right: 8px; }
+.fill { height: 100%; border-radius: 3px; }
+.fill.high { background: #a6e3a1; }
+.fill.medium { background: #f9e2af; }
+.fill.low { background: #f38ba8; }
+.pct { font-weight: 600; font-size: 0.85em; }
+.pct.high { color: #a6e3a1; }
+.pct.medium { color: #f9e2af; }
+.pct.low { color: #f38ba8; }
+.cnt { color: #6c7086; font-size: 0.8em; }
+.source { background: #11111b; border-radius: 8px; overflow: auto; font-size: 13px; line-height: 1.6; }
+.source table { background: transparent; width: 100%; }
+.source td { padding: 0 12px; white-space: pre; font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace; border: none; }
+.source tr:hover { background: #1e1e2e; }
+.ln { color: #45475a; text-align: right; user-select: none; width: 50px; }
+.ct { text-align: right; width: 50px; font-size: 0.8em; padding-right: 16px !important; }
+.ct.hit { color: #a6e3a1; }
+.ct.miss { color: #f38ba8; font-weight: 700; }
+tr.hit { background: rgba(166, 227, 161, 0.06); }
+tr.miss { background: rgba(243, 139, 168, 0.1); }
+tr.partial { background: rgba(249, 226, 175, 0.08); }
+.code { color: #cdd6f4; }
+.kw { color: #cba6f7; }
+.str { color: #a6e3a1; }
+.num { color: #fab387; }
+.cm { color: #585b70; font-style: italic; }
+.fn { color: #89b4fa; }
+.op { color: #89dceb; }
