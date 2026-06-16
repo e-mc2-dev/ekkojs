@@ -1,0 +1,9 @@
+{
+  "workspace": {
+    "members": ["libs/*", "app"],
+    "map": {
+      "@test/math": "libs/math",
+      "@test/strings": "libs/strings"
+    }
+  }
+}

@@ -1,0 +1,110 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   style.css — the demo's look, modelled on the @ekko/asgard "Brand" dark theme.
+   The CSS variables below are the actual asgard design tokens (background,
+   surface, text, border, accent, and semantic colours), so the window feels like
+   a real asgard app without pulling in the React component library.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --bg: #0a0a0f;
+  --bg-2: #12131a;
+  --surface: #171821;
+  --elevated: #15161f;
+  --text: #e8eef0;
+  --text-dim: #9aa7a2;
+  --border: #23252f;
+  --accent: #81a1c1;
+  --accent-soft: rgba(129, 161, 193, 0.16);
+  --accent-active: #5e81ac;
+  --info: #88c0d0;
+  --success: #3fb950;
+  --radius: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 20px;
+}
+
+.app { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+
+/* Header */
+.hero {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 18px 20px;
+  background: linear-gradient(135deg, var(--surface), var(--bg-2));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.hero h1 { font-size: 18px; font-weight: 650; }
+.subtitle { color: var(--text-dim); font-size: 12.5px; margin-top: 2px; }
+
+.badge {
+  font-size: 12px; font-weight: 600; color: var(--text-dim);
+  padding: 5px 12px; border-radius: 999px;
+  background: var(--bg); border: 1px solid var(--border);
+  white-space: nowrap;
+}
+.badge.ok { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+
+/* Cards */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+}
+.card h2 { font-size: 13px; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 12px; }
+
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.row + .row { margin-top: 10px; }
+.hint { color: var(--text-dim); font-size: 12px; margin-top: 8px; }
+.dm-group { display: inline-flex; align-items: center; gap: 8px; }
+
+/* Buttons */
+.btn {
+  font: inherit; font-weight: 550; cursor: pointer;
+  color: var(--bg); background: var(--accent);
+  border: 1px solid var(--accent); border-radius: 8px;
+  padding: 8px 16px; transition: background 0.12s, border-color 0.12s;
+}
+.btn:hover { background: var(--accent-active); border-color: var(--accent-active); }
+.btn-ghost { color: var(--text); background: transparent; border-color: var(--border); }
+.btn-ghost:hover { background: var(--accent-soft); border-color: var(--accent); }
+
+/* Inputs */
+.input {
+  font: inherit; color: var(--text);
+  background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+  padding: 8px 12px; flex: 1; min-width: 160px;
+}
+.input:focus { outline: none; border-color: var(--accent); }
+.input-sm { flex: 0 0 64px; min-width: 0; width: 64px; text-align: center; }
+
+/* Chat log */
+.log { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; max-height: 220px; overflow-y: auto; }
+.log-line {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 10px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+}
+.log-from { color: var(--accent); font-weight: 600; font-size: 12.5px; }
+.chip { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; padding: 2px 7px; border-radius: 999px; }
+.chip-all { color: var(--bg); background: var(--info); }
+.chip-dm { color: var(--bg); background: var(--success); }
+
+/* Key/value table */
+.kv { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.kv td { padding: 6px 8px; border-bottom: 1px solid var(--border); }
+.kv td:first-child { color: var(--text-dim); width: 96px; }
+.kv tr:last-child td { border-bottom: none; }
+
+/* Scrollbar, asgard-style */
+.log::-webkit-scrollbar { width: 8px; }
+.log::-webkit-scrollbar-thumb { background: #2a2c38; border-radius: 999px; }
+.log::-webkit-scrollbar-thumb:hover { background: #3a3d4d; }
