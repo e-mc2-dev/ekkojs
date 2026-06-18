@@ -1,0 +1,6 @@
+{
+  "name": "tui-smoke",
+  "version": "1.0.0",
+  "type": "tui",
+  "entry": "app.tsx"
+}

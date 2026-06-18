@@ -1,0 +1,9 @@
+{
+  "name": "@test/strings",
+  "version": "1.0.0",
+  "type": "lib",
+  "exports": {
+    ".": "./src/index.ts",
+    "./case": "./src/case.ts"
+  }
+}
