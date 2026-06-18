@@ -1,0 +1,9 @@
+{
+  "name": "@test/app",
+  "version": "1.0.0",
+  "type": "run",
+  "entry": "src/main.ts",
+  "ship": {
+    "@test/math": "1.0.0"
+  }
+}

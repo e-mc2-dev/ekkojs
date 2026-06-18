@@ -1,0 +1,1 @@
+SELECT 1e400 AS x

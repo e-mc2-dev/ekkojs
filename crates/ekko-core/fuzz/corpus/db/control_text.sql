@@ -1,0 +1,1 @@
+SELECT char(0)||char(7)||'x' AS y
