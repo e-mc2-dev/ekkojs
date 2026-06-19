@@ -1,0 +1,7 @@
+{
+  "coverage": {
+    "include": ["src/**/*.ts"],
+    "exclude": ["tests/**", "*.test.ts"],
+    "reportDir": "coverage"
+  }
+}

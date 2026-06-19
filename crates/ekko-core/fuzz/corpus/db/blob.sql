@@ -1,0 +1,1 @@
+SELECT zeroblob(256) AS b

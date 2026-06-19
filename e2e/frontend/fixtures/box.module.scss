@@ -1,0 +1,4 @@
+$pad: 8px;
+.base { padding: $pad; }
+.box { composes: base; color: red; &:hover { opacity: .5; } }
+.title { font-size: 2rem; }

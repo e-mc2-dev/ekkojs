@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EkkoJS GUI Demo</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>EkkoJS GUI Demo</h1>
+      <p class="subtitle">Native window &bull; Custom protocol &bull; IPC bridge &bull; Multi-window &bull; Tray &bull; Menu</p>
+    </header>
+
+    <section class="card">
+      <h2>IPC Communication</h2>
+      <div class="row">
+        <button id="btn-ping">Ping V8</button>
+        <button id="btn-title">Set Window Title</button>
+      </div>
+      <pre id="output">Waiting for messages...</pre>
+    </section>
+
+    <section class="card">
+      <h2>Window Info</h2>
+      <table>
+        <tr><td>Protocol</td><td id="info-protocol"></td></tr>
+        <tr><td>Origin</td><td id="info-origin"></td></tr>
+        <tr><td>URL</td><td id="info-url"></td></tr>
+        <tr><td>User Agent</td><td id="info-ua"></td></tr>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>Features Demonstrated</h2>
+      <ul>
+        <li><strong>Window options:</strong> size, min/max, resizable, theme, decorations</li>
+        <li><strong>Native menu:</strong> File &gt; New Window, Frameless Window, Quit</li>
+        <li><strong>System tray:</strong> icon with context menu</li>
+        <li><strong>Multi-window:</strong> File &gt; New Window opens additional windows</li>
+        <li><strong>Frameless:</strong> File &gt; Frameless Window (custom titlebar in HTML)</li>
+        <li><strong>IPC:</strong> bidirectional JSON messaging V8 &harr; webview</li>
+        <li><strong>TypeScript:</strong> all UI files are .ts, transpiled via SWC on-the-fly</li>
+      </ul>
+    </section>
+  </div>
+  <script type="module" src="/app.ts"></script>
+</body>
+</html>

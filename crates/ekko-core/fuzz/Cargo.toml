@@ -1,0 +1,39 @@
+[package]
+name = "ekko-core-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2021"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+serde_json = "1"
+
+[dependencies.ekko-core]
+path = ".."
+
+[[bin]]
+name = "css"
+path = "fuzz_targets/css.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "graphql"
+path = "fuzz_targets/graphql.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "db"
+path = "fuzz_targets/db.rs"
+test = false
+doc = false
+bench = false
+
+# Exclude from the parent workspace (cargo-fuzz manages this crate independently).
+[workspace]
