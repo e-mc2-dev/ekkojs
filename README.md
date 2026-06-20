@@ -128,7 +128,7 @@ One install, batteries included.
 
 * **Direct TypeScript execution**: `.ts` and `.tsx` run without a build step.
 * **Pure ESM**: modern JavaScript modules by design.
-* **HTTP server**: a Kestrel-backed server with familiar route handlers.
+* **HTTP server**: a rock solid server with familiar route handlers.
 * **Security middleware**: built-in CORS, Helmet, and rate limiting.
 * **Threading**: real OS threads through a warm V8 isolate pool, spawned with `Ekko.spawn`.
 * **Parallelism**: work runs across every core with structured concurrency.
