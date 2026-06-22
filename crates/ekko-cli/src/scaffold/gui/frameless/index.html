@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frameless</title>
+  <!--
+    A frameless window: the controller created it with `decorations: false`, so
+    there is no OS titlebar. We draw our own here in HTML/CSS. The `-webkit-app-region`
+    rules make the bar draggable while keeping the buttons clickable.
+    This file is self-contained (inline CSS + plain-JS module) because the internal
+    protocol serves it from its own ./ui/frameless root.
+  -->
+  <style>
+    :root {
+      --bg: #0a0a0f; --bar: #12131a; --surface: #171821;
+      --text: #e8eef0; --text-dim: #9aa7a2; --border: #23252f;
+      --accent: #81a1c1; --info: #88c0d0; --success: #3fb950; --error: #f85149;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); height: 100vh; display: flex; flex-direction: column; font-size: 13px; }
+
+    /* Custom titlebar (drag region) */
+    .titlebar {
+      height: 36px; flex: 0 0 36px; background: var(--bar);
+      display: flex; align-items: center; padding: 0 6px 0 14px;
+      border-bottom: 1px solid var(--border);
+      -webkit-app-region: drag; user-select: none;
+    }
+    .titlebar .title { flex: 1; font-size: 12px; color: var(--text-dim); font-weight: 600; }
+    .win-btn {
+      -webkit-app-region: no-drag;
+      width: 30px; height: 26px; border: none; background: none; color: var(--text-dim);
+      cursor: pointer; font-size: 13px; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .win-btn:hover { background: #23252f; color: var(--text); }
+    .win-btn.close:hover { background: var(--error); color: #fff; }
+
+    /* Body */
+    .content { flex: 1; padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+    .identity { font-weight: 600; color: var(--accent); }
+    .note { color: var(--text-dim); }
+    .note code { background: var(--surface); padding: 2px 6px; border-radius: 4px; }
+    .log { margin-top: 4px; display: flex; flex-direction: column; gap: 6px; overflow-y: auto; }
+    .log-line { display: flex; gap: 8px; align-items: center; padding: 6px 9px; background: var(--surface); border: 1px solid var(--border); border-radius: 7px; }
+    .chip { font-size: 10px; font-weight: 700; text-transform: uppercase; padding: 2px 6px; border-radius: 999px; color: var(--bg); }
+    .chip-all { background: var(--info); } .chip-dm { background: var(--success); }
+    .log-from { color: var(--accent); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="titlebar">
+    <span class="title" id="title">Frameless Window</span>
+    <button class="win-btn" id="min" title="Minimize">&#x2500;</button>
+    <button class="win-btn" id="max" title="Maximize">&#x25A1;</button>
+    <button class="win-btn close" id="close" title="Close">&#x2715;</button>
+  </div>
+
+  <div class="content">
+    <div class="identity" id="identity">connecting...</div>
+    <div class="note">Custom titlebar drawn in HTML/CSS. The OS frame is off (<code>decorations: false</code>). Drag the bar to move the window.</div>
+    <div class="note">This window also joins the chat: broadcasts and direct messages addressed to it appear below.</div>
+    <div class="log" id="log"></div>
+  </div>
+
+  <script type="module">
+    // Plain JS (this file is not transpiled): talk to the bridge directly.
+    const ekko = window.ekko;
+    let myId = null;
+    const nonce = Math.random().toString(36).slice(2);
+
+    const $ = (id) => document.getElementById(id);
+
+    // Titlebar buttons -> the controller maps "close" to close(thisWindow).
+    $("close").addEventListener("click", () => ekko.send({ type: "window-control", action: "close" }));
+    $("min").addEventListener("click", () => ekko.send({ type: "window-control", action: "minimize" }));
+    $("max").addEventListener("click", () => ekko.send({ type: "window-control", action: "maximize" }));
+
+    ekko.onMessage((m) => {
+      if (m.channel === "whoami" && m.nonce === nonce) {
+        myId = m.windowId;
+        $("identity").textContent = m.label + "  (id " + myId + ")";
+        $("title").textContent = m.label;
+        return;
+      }
+      if (m.channel === "chat") {
+        if (m.scope === "dm" && m.to !== myId) return;
+        const line = document.createElement("div");
+        line.className = "log-line";
+        const chip = document.createElement("span");
+        chip.className = "chip " + (m.scope === "dm" ? "chip-dm" : "chip-all");
+        chip.textContent = m.scope === "dm" ? "direct" : "all";
+        const who = document.createElement("span");
+        who.className = "log-from";
+        who.textContent = m.from;
+        const body = document.createElement("span");
+        body.textContent = m.text;
+        line.append(chip, who, body);
+        $("log").prepend(line);
+      }
+    });
+
+    // Join the handshake.
+    ekko.send({ type: "register", nonce });
+  </script>
+</body>
+</html>
