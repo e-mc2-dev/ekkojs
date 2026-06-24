@@ -4,7 +4,7 @@ A JavaScript/TypeScript runtime built from a Rust host, V8, and a .NET 10 AOT na
 
 - Author: hello@e-mc2.dev
 - License: MIT
-- Organization: Ampla Network LLC
+- Organization:  E-mc2.dev
 
 ## Install
 
