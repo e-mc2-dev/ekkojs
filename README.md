@@ -175,7 +175,7 @@ If you test EkkoJS and something fails, feels unclear, or does not work as expec
 
 ## License
 
-MIT, Ampla Network LLC.
+MIT, E-mc2.dev
 
 Author: [hello@e-mc2.dev](mailto:hello@e-mc2.dev)
 
