@@ -1,0 +1,13 @@
+# Build output
+target/
+**/bin/
+**/obj/
+_build_out/
+.ekko/
+dist/
+node_modules/
+
+# Local store / keys / scratch
+_keys/
+_tests_tmp/
+*.pdb

@@ -1,0 +1,2 @@
+// Windows application icon for ekko.exe. Resource id 1 = the icon the shell shows (lowest id wins).
+1 ICON "ekko.ico"

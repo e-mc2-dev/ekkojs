@@ -1,0 +1,6 @@
+{
+  "name": "ekko-doc-viewer",
+  "version": "1.0.0",
+  "type": "tui",
+  "entry": "browser.tsx"
+}

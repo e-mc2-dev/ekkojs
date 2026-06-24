@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EkkoJS GUI Demo</title>
+  <!-- Served over the internal protocol, not HTTP. -->
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="app">
+    <!-- Header: shows this window's assigned identity once the handshake completes. -->
+    <header class="hero">
+      <div>
+        <h1>EkkoJS GUI Demo</h1>
+        <p class="subtitle">Multi-window &middot; broadcast &amp; direct messaging &middot; system + custom frames &middot; tray</p>
+      </div>
+      <span id="identity" class="badge">connecting...</span>
+    </header>
+
+    <!-- Windows: open more windows, with either the OS frame or a custom one. -->
+    <section class="card">
+      <h2>Windows</h2>
+      <div class="row">
+        <button id="btn-new" class="btn">New Window</button>
+        <button id="btn-frameless" class="btn btn-ghost">New Frameless Window</button>
+        <button id="btn-ontop" class="btn btn-ghost">Toggle Always On Top</button>
+        <button id="btn-title" class="btn btn-ghost">Set Title</button>
+      </div>
+      <p class="hint">Frameless windows draw their own titlebar in HTML/CSS (see ui/frameless).</p>
+    </section>
+
+    <!-- Messaging: broadcast reaches every window; a direct message reaches one. -->
+    <section class="card">
+      <h2>Messaging</h2>
+      <div class="row">
+        <input id="msg" class="input" type="text" placeholder="Type a message..." />
+      </div>
+      <div class="row">
+        <button id="btn-broadcast" class="btn">Broadcast to all</button>
+        <span class="dm-group">
+          <span class="hint">to window</span>
+          <input id="dm-target" class="input input-sm" type="number" min="1" value="1" />
+          <button id="btn-dm" class="btn btn-ghost">Send direct</button>
+        </span>
+      </div>
+      <div id="log" class="log"></div>
+    </section>
+
+    <!-- Proof that we are on the internal protocol, with no TCP port in sight. -->
+    <section class="card">
+      <h2>Window info</h2>
+      <table class="kv">
+        <tr><td>Protocol</td><td id="info-protocol"></td></tr>
+        <tr><td>Origin</td><td id="info-origin"></td></tr>
+        <tr><td>URL</td><td id="info-url"></td></tr>
+      </table>
+    </section>
+  </main>
+
+  <script type="module" src="/app.ts"></script>
+</body>
+</html>
